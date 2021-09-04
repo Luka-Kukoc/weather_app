@@ -77,18 +77,6 @@ app.get("/weather", (req, res) => {
     
 })
 
-app.get("/products", (req, res) => {
-
-    if (!req.query.search) {
-        return res.send({ //return for stoping the funct execution
-            error: "You must provide search"
-        })
-    }
-    console.log(req.query.search)
-    res.send({
-        products: []
-    })
-})
 
 app.get("/help/*", (req, res) => {
     res.render("404", {
