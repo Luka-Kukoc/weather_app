@@ -4,10 +4,11 @@ const geocode = (cityname, callback) => {
     const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + cityname + ".json?access_token=pk.eyJ1IjoibHVrYWt1a29jIiwiYSI6ImNrc3VnOHlycjAyMDgybnB0bXhhNHVzZ3AifQ._k0HUWhtN2AxjquwVaDJ5w"
 
     request({ url, json: true }, (error, {body}) => {
-        
+        console.log(body.features)
         if(error) {
             callback("Unable to connect to location services!", undefined)
-        } else if (!body.features.lenght) {
+        } else if(!body.features[0]) {
+            
             callback("Unable to find location. Try another search", undefined)
         } else {
             callback(undefined, {
